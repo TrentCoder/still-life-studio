@@ -63,6 +63,20 @@ floor.rotation.x = -0.5 * Math.PI;
 floor.receiveShadow = true;
 scene.add(floor);
 
+// Wall
+var wallGeometry = new THREE.PlaneGeometry(100, 100, 20, 20);
+var wallMaterial = new THREE.MeshPhongMaterial({
+  color: 0xffebec,
+  specular: 0x000000,
+  shininess: 100
+});
+
+var wall = new THREE.Mesh(wallGeometry, wallMaterial);
+wall.rotation.z  = -0.5 * Math.PI;
+wall.receiveShadow = true;
+scene.add(wall);
+
+
 // Lights
 // Ambient light for general illumination
 var ambientLight = new THREE.AmbientLight(0x090909);
@@ -76,6 +90,11 @@ spotLight.shadow.bias = 0.0001;
 spotLight.shadow.mapSize.width = 2048; // Shadow Quality
 spotLight.shadow.mapSize.height = 2048; // Shadow Quality
 scene.add(spotLight);
+
+// AxisHelper
+//The X axis is red. The Y axis is green. The Z axis is blue.
+var axesHelper = new THREE.AxesHelper( 5 );
+scene.add( axesHelper );
 
 // Render Loop
 function render() {
